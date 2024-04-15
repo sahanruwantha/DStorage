@@ -1,12 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"github.com/anthdm/foreverstore/p2p"
+	"log"
+	"github.com/sahanruwantha/DStorage/p2p"
 )
 
 func main()  {
-	tr := p2p.NewTCPTranport()
-
-	fmt.Println("Ayubowan")
+	tr := p2p.NewTCPTranport(":3000")
+	if err := tr.ListenAndAccept(); err != nil {
+		log.Fatal(err)
+	}
+	select {}
 }
